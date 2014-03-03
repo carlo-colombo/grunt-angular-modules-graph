@@ -1,7 +1,7 @@
 {
   "name": "grunt-angular-modules-graph",
   "description": "Generate modules dependencies graph in .dot format",
-  "version": "0.1.0",
+  "version": "0.1.0-1",
   "homepage": "https://github.com/carlo-colombo/grunt-angular-modules-graph",
   "author": {
     "name": "Carlo Colombo",
@@ -36,6 +36,6 @@
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "angular", "dot", "graphviz", "modules"
   ]
 }
