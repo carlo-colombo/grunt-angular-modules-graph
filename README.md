@@ -79,5 +79,9 @@ grunt.initConfig({
 })
 ```
 
+### Example
+https://github.com/angular-ui/bootstrap example dependencies graph
+![angular-ui/bootstrap ](angular-ui-bootstrap-modules-graph.png "angular-ui/bootstrap Dependencies graph")
+
 ## Release History
 0.1.0 first release
