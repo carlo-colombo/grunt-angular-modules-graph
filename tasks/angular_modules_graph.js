@@ -6,46 +6,9 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
 
-function addName(name) {
-  this.items.push(name)
-  return this
-}
-
-function Module(name, deps) {
-  this.name = name
-  this.modules = deps
-  this.items = []
-}
-
-var methods = ['constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value']
-
-methods.forEach(function(method) {
-  Module.prototype[method] = function(name) {
-    return addName.call(this, name)
-  }
-})
-
-Module.prototype.run = function() {
-  return this
-};
-Module.prototype.config = function() {
-  return this
-};
-
-var angular = {
-  modules: [],
-  modulesNames: [],
-  module: function(name, deps) {
-    var module = new Module(name, deps)
-    this.modules.push(module)
-    this.modulesNames.push(name)
-    return module
-  }
-}
-
-var template = '\
+var angular = require('../src/fake-angular')
+    ,template = '\
 digraph dependencies{\n\
   node[shape="record"]\n\
 <% _.forEach(modules, function(module){ %>\
