@@ -39,7 +39,7 @@ var angular = {
     } else {
       module = modulesMap[name]
     }
-    return module
+    return this.module
   }
 }
 
