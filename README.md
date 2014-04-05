@@ -115,6 +115,7 @@ https://github.com/angular-ui/bootstrap example dependencies graph (partial)
 ![angular-ui/bootstrap ](angular-ui-bootstrap-modules-graph.png "angular-ui/bootstrap Dependencies graph")
 
 ## Release History
+- 0.2.2 added angular global api (noop, identiy, element, ...)
 - 0.2.1 window, document, navigator in global scope
 - 0.2.0 modules can be requested before module definition (allow requesting modules in more than 1 file)
 - 0.1.0 first release
