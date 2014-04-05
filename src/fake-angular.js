@@ -1,10 +1,5 @@
 'use strict';
 
-function addName(name) {
-  this.items.push(name)
-  return this
-}
-
 function Module(name, deps) {
   this.name = name
   this.modules = deps
@@ -14,9 +9,10 @@ function Module(name, deps) {
 var methods = ['constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value']
 
 methods.forEach(function(method) {
-  Module.prototype[method] = function(name) {
-    return addName.call(this, name)
-  }
+	Module.prototype[method] = function addItem(name) {
+		this.items.push(name)
+		return this
+	}
 })
 
 Module.prototype.run = function() {
@@ -26,21 +22,32 @@ Module.prototype.config = function() {
   return this
 };
 
-var angular = {
-  modules: [],
-  modulesMap: {},
-  modulesNames: [],
-  module: function(name, deps) {
-    if (deps != undefined) {
-      var module = new Module(name, deps)
-      this.modules.push(module)
+module.exports = function() {
+  return {
+    noop: function(){},
+    identity: function(a){return a},
+    modules: [],
+    modulesMap: {},
+    modulesNames: [],
+    module: function(name, deps) {
+      var self = this,
+        dependencies = (deps || []).map(function(dep){
+          return self.modulesMap[dep]
+        }).filter(this.identity)
+
+      if (this.modulesNames.indexOf(name)>-1){
+        if(deps){
+          this.modulesMap[name].modules = dependencies
+        }
+        return this.modulesMap[name]
+      }
+      
+      var module = new Module(name,dependencies)
+      
       this.modulesNames.push(name)
       this.modulesMap[name] = module
-    } else {
-      module = modulesMap[name]
+      this.modules.push(module)
+      return module
     }
-    return module
   }
 }
-
-module.exports = angular
