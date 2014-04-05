@@ -3,7 +3,7 @@ var should = require('should');
 describe("angular", function() {
 
   var angular
-  
+
   beforeEach(function() {
     angular = require('../src/fake-angular')()
   })
@@ -52,12 +52,12 @@ describe("angular", function() {
         })
       })
     })
-    
+
     it("should define noop function", function(){
         should.exist(angular.noop)
         angular.noop.should.be.a.Function
     })
-    
+
     it("should define identity function", function(){
         should.exist(angular.identity)
         angular.identity.should.be.a.Function
@@ -77,7 +77,7 @@ describe("angular", function() {
       var modules = angular.module('testModule2', ['testModule1']).modules
 
       modules.should.have.a.lengthOf(1)
-      modules[0].should.be.equal(module1)
+      modules[0].should.be.equal('testModule1')
     })
 
     describe('items', function() {

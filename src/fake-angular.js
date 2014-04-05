@@ -30,22 +30,14 @@ module.exports = function() {
     modulesMap: {},
     modulesNames: [],
     module: function(name, deps) {
-      var self = this,
-        dependencies = (deps || []).map(function(dep){
-          return self.modulesMap[dep] || {
-            name: dep,
-            ext: true
-          }
-        })
-
       if (this.modulesNames.indexOf(name)>-1){
         if(deps){
-          this.modulesMap[name].modules = dependencies
+          this.modulesMap[name].modules = deps
         }
         return this.modulesMap[name]
       }
 
-      var module = new Module(name,dependencies)
+      var module = new Module(name,deps)
 
       this.modulesNames.push(name)
       this.modulesMap[name] = module
