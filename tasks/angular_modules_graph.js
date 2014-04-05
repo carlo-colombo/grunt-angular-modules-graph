@@ -7,21 +7,8 @@
  */
 
 
-var angular = require('../src/fake-angular')
-    ,template = '\
-digraph dependencies{\n\
-  node[shape="record"]\n\
-<% _.forEach(modules, function(module){ %>\
-  "<%- module.name %>"[label="{<%- module.name %>|<%- module.items.join(\'\\\\n\')%>}"] \n\
-<%}) %>\n\
-\n\
-<% _.forEach(modules, function(module){ %>\
-<% _.forEach(module.modules, function(dependency){ %>\
-  "<%- module.name %>" -> "<%- dependency %>"\
-  [color="<% modulesNames.indexOf(dependency)>-1 ? print(\'black\') : print(options.externalDependenciesColor) %>"]\n\
-<%}) %>\
-<%}) %>\
-}'
+var angular = require('../src/fake-angular')()
+    ,template = require('../src/graph-template')
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('modules-graph', 'Generate modules dependencies graph in .dot format', function() {
@@ -31,10 +18,7 @@ module.exports = function(grunt) {
     });
 
     for (var dest in this.data.files) {
-      grunt.file.expand({}, this.data.files[dest]).forEach(function(file) {
-        var file = grunt.file.read(file)
-        eval(file)
-      })
+      grunt.file.expand({}, this.data.files[dest]).forEach(readAndEvalFile)
 
       grunt.file.write(dest, grunt.template.process(template, {
         data: {
@@ -45,4 +29,8 @@ module.exports = function(grunt) {
       }));
     }
   });
+  
+  function readAndEvalFile(file){
+  	eval(grunt.file.read(file))
+  }
 };
