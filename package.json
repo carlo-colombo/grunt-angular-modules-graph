@@ -27,11 +27,20 @@
     "test": "grunt test"
   },
   "devDependencies": {
+    "mocha": "^1.18.2",
+    "should": "^3.2.0",
+    "grunt-mocha-test": "^0.10.0",
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "gruntplugin", "angular", "dot", "graphviz", "modules"
+    "gruntplugin",
+    "angular",
+    "dot",
+    "graphviz",
+    "modules"
   ]
 }
