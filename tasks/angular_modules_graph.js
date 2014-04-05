@@ -9,6 +9,9 @@
 
 var angular = require('../src/fake-angular')()
     ,template = require('../src/graph-template')
+    ,document = {}
+    ,window = {}
+    ,navigator = {};
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('modules-graph', 'Generate modules dependencies graph in .dot format', function() {
@@ -16,6 +19,8 @@ module.exports = function(grunt) {
     var options = this.options({
       externalDependenciesColor: 'red'
     });
+
+
 
     for (var dest in this.data.files) {
       grunt.file.expand({}, this.data.files[dest]).forEach(readAndEvalFile)
@@ -29,7 +34,7 @@ module.exports = function(grunt) {
       }));
     }
   });
-  
+
   function readAndEvalFile(file){
   	eval(grunt.file.read(file))
   }
