@@ -29,7 +29,9 @@ grunt.initConfig({
       // Task-specific options go here.
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      files: {
+        'destination-file.dot': ['src/*.js']
+      }
     },
   },
 });
@@ -45,8 +47,37 @@ A string value that to set external dependencies link color
 
 ### Usage Examples
 
+#### Sample of modules definitions pattern supported
+
+```js
+//even different files
+angular.module('module1',[])
+  .controller('testController', angular.noop)
+
+angular.module('module1')
+  .factory('testFactory', angular.noop)
+
+//same file
+(function(){
+  var module3 = angular.module('module3',[])
+  module3.value('aValue', 42)
+}())
+
+(function(module){
+  module.constant('foo', 42)
+}(angular.module('module2',['module1', 'module3'])))
+```
+#### Restrictions
+#####does not handle global defined modules
+
+```js
+    //fileA.js
+    window.module1 = angular.module('testModule1',[])
+    //fileB.js
+    window.module1.controller('testContoller', angular.noop)
+```
+
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
@@ -61,7 +92,7 @@ grunt.initConfig({
 });
 ```
 
-### Example: render graph with grunt-graphviz 
+### Example: render graph with grunt-graphviz
 ```shell
 npm install grunt-grapviz --save-dev
 ```
@@ -85,3 +116,4 @@ https://github.com/angular-ui/bootstrap example dependencies graph (partial)
 
 ## Release History
 0.1.0 first release
+0.2.0 modules can be requested before module definition (allow requesting modules in more than 1 file)
