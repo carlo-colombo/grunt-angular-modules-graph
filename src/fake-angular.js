@@ -32,8 +32,11 @@ module.exports = function() {
     module: function(name, deps) {
       var self = this,
         dependencies = (deps || []).map(function(dep){
-          return self.modulesMap[dep]
-        }).filter(this.identity)
+          return self.modulesMap[dep] || {
+            name: dep,
+            ext: true
+          }
+        })
 
       if (this.modulesNames.indexOf(name)>-1){
         if(deps){
@@ -41,9 +44,9 @@ module.exports = function() {
         }
         return this.modulesMap[name]
       }
-      
+
       var module = new Module(name,dependencies)
-      
+
       this.modulesNames.push(name)
       this.modulesMap[name] = module
       this.modules.push(module)
