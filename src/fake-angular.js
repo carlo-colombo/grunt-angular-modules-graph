@@ -7,6 +7,30 @@ function Module(name, deps) {
 }
 
 var methods = ['constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value']
+var globalApis = ['lowercase',
+  'uppercase',
+  'forEach',
+  'extend',
+  'identity',
+  'noop',
+  'isUndefined',
+  'isDefined',
+  'isObject',
+  'isString',
+  'isNumber',
+  'isDate',
+  'isArray',
+  'isFunction',
+  'isElement',
+  'copy',
+  'equals',
+  'bind',
+  'toJson',
+  'fromJson',
+  'bootstrap',
+  'injector',
+  'element',
+];
 
 methods.forEach(function(method) {
 	Module.prototype[method] = function addItem(name) {
@@ -23,9 +47,7 @@ Module.prototype.config = function() {
 };
 
 module.exports = function() {
-  return {
-    noop: function(){},
-    identity: function(a){return a},
+  var angular = {
     modules: [],
     modulesMap: {},
     modulesNames: [],
@@ -45,4 +67,10 @@ module.exports = function() {
       return module
     }
   }
+  var noop = function(){}
+  globalApis.forEach(function(method) {
+    angular[method] = noop
+  });
+
+  return angular
 }

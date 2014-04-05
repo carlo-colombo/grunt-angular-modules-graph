@@ -44,6 +44,32 @@ describe("angular", function() {
       'config'
     ];
 
+    var globalApis = ['lowercase',
+      'uppercase',
+      'forEach',
+      'extend',
+      'noop',
+      'identity',
+      'isUndefined',
+      'isDefined',
+      'isObject',
+      'isString',
+      'isNumber',
+      'isDate',
+      'isArray',
+      'isFunction',
+      'isElement',
+      'copy',
+      'equals',
+      'bind',
+      'toJson',
+      'fromJson',
+      'bootstrap',
+      'injector',
+      'element',
+      'module'
+    ];
+
     describe("should have defined method", function() {
       methods.forEach(function(method) {
         it(method, function() {
@@ -53,14 +79,13 @@ describe("angular", function() {
       })
     })
 
-    it("should define noop function", function(){
-        should.exist(angular.noop)
-        angular.noop.should.be.a.Function
-    })
-
-    it("should define identity function", function(){
-        should.exist(angular.identity)
-        angular.identity.should.be.a.Function
+    describe("should have defined methods of global api", function(){
+      globalApis.forEach(function(method){
+        it(method, function(){
+          should.exist(angular[method])
+          angular[method].should.be.a.Function
+        })
+      })
     })
 
     describe("every method should return module to allow chainability", function() {
