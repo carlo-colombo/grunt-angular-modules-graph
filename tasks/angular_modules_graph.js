@@ -20,8 +20,6 @@ module.exports = function(grunt) {
       externalDependenciesColor: 'red'
     });
 
-
-
     for (var dest in this.data.files) {
       grunt.file.expand({}, this.data.files[dest]).forEach(readAndEvalFile)
 
@@ -32,10 +30,17 @@ module.exports = function(grunt) {
           options: options
         }
       }));
+
+      grunt.log.writeln("Generating", (grunt.log.wordlist(this.data.files[dest])).cyan,'->',(dest).cyan);
     }
   });
 
   function readAndEvalFile(file){
-  	eval(grunt.file.read(file))
+    try{
+      eval(grunt.file.read(file))
+    }
+  	catch(e){
+  	  grunt.log.writeln(file + ' skipped due to error: '+e)
+  	}
   }
 };
