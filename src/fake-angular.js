@@ -33,10 +33,10 @@ var globalApis = ['lowercase',
 ];
 
 methods.forEach(function(method) {
-	Module.prototype[method] = function addItem(name) {
-		this.items.push(name)
-		return this
-	}
+  Module.prototype[method] = function addItem(name) {
+    this.items.push(name)
+    return this
+  }
 })
 
 Module.prototype.run = function() {
