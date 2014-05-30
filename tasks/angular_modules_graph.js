@@ -29,7 +29,6 @@ module.exports = function(grunt) {
       var res = angularModulesGraph(scripts)
 
       res.results.forEach(function(result) {
-        console.info(result)
         if (result.error) {
           grunt.log.writeln(result.id + ' skipped due to error: ' + result.exception)
         }
