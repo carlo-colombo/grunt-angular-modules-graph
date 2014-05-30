@@ -42,5 +42,8 @@
     "dot",
     "graphviz",
     "modules"
-  ]
+  ],
+  "dependencies": {
+    "angular-modules-graph": "^0.1.0"
+  }
 }

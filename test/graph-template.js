@@ -8,7 +8,10 @@ describe('graph template', function(){
   var angular
 
   beforeEach(function() {
-    angular = require('../src/fake-angular')()
+    angular = function () {
+      var angularModulesGraph = require('angular-modules-graph')
+      return angularModulesGraph([]).angular
+    }() 
   })
 
   function renderTemplate(){
@@ -59,10 +62,10 @@ describe('graph template', function(){
   })
 
   it("should list external dependencies with a different color", function(){
-    angular.module('testModule2', ['testModule1'])
+    angular.module('testModule2', ['testModule4'])
 
     var res = renderTemplate()
 
-    res.should.match(/"testModule2"\s*->\s*"testModule1"\s*\[color="red"]/)
+    res.should.match(/"testModule2"\s*->\s*"testModule4"\s*\[color="red"]/)
   })
 })
