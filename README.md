@@ -94,7 +94,7 @@ grunt.initConfig({
 
 ### Example: render graph with grunt-graphviz
 ```shell
-npm install grunt-grapviz --save-dev
+npm install grunt-graphviz --save-dev
 ```
 ```js
 grunt.loadNpmTasks('grunt-graphviz');
