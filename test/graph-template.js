@@ -8,10 +8,11 @@ describe('graph template', function(){
   var angular
 
   beforeEach(function() {
+    angular = {}
     angular = function () {
       var angularModulesGraph = require('angular-modules-graph')
       return angularModulesGraph([]).angular
-    }() 
+    }()
   })
 
   function renderTemplate(){
@@ -67,5 +68,41 @@ describe('graph template', function(){
     var res = renderTemplate()
 
     res.should.match(/"testModule2"\s*->\s*"testModule4"\s*\[color="red"]/)
+  })
+
+
+  it.only("should list controllers and services", function () {
+    angular
+      .module('testModule', ['ngDep', 'ngDep2'])
+      .controller('testController', function (testService) {})
+      .controller('testController2', function (testService2) {})
+      .factory('testService', function (dep3) {
+        return {
+          doFoo: function () {},
+          isBar: function () {},
+        }
+      })
+      .factory('testService2', function (dep4) {
+        return {
+          getName: function () {}
+        }
+      })
+    angular
+      .module('testModule2')
+      .controller('testController3', function (testService3) {})
+      .controller('testController4', function (testService4) {})
+      .factory('testService3', function (dep3) {
+        return {
+          doFoo: function () {},
+          isBar: function () {},
+        }
+      })
+      .factory('testService4', function (dep4) {
+        return {
+          getName: function () {}
+        }
+      })
+
+    var res = renderTemplate()
   })
 })
