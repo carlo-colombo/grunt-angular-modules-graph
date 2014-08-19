@@ -44,6 +44,6 @@
     "modules"
   ],
   "dependencies": {
-    "angular-modules-graph": "^0.1.0"
+    "angular-modules-graph": "git+ssh://git@github.com:lucalanca/angular-modules-graph.git"
   }
 }
