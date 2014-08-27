@@ -27,7 +27,6 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "dot": "^1.0.2",
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-test": "^0.10.0",
@@ -45,6 +44,7 @@
     "modules"
   ],
   "dependencies": {
-    "angular-architecture-graph": "~0.1.0"
+    "angular-architecture-graph": "~0.1.0",
+    "dot": "^1.0.2"
   }
 }
