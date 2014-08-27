@@ -8,9 +8,8 @@
 
 
 var angularModulesGraph = require('angular-architecture-graph'),
-  template = require('../src/graph-template'),
-  dots = require("dot");
-  document = {}, window = {}, navigator = {};
+    templates = require('../src/diagrams-rendered')(grunt),
+    document = {}, window = {}, navigator = {};
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('modules-graph', 'Generate modules dependencies graph in .dot format', function() {
