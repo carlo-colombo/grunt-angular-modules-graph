@@ -7,7 +7,7 @@
  */
 
 
-var angularModulesGraph = require('angular-modules-graph'),
+var angularModulesGraph = require('angular-architecture-graph'),
   template = require('../src/graph-template'),
   dots = require("dot");
   document = {}, window = {}, navigator = {};
