@@ -1,8 +1,5 @@
-var dot = require('../node_modules/dot/doT.js');
-
-dot.templateSettings.strip = false;
-
-module.exports = function (grunt) {
+module.exports = function (grunt, dot) {
+  dot.templateSettings.strip = false;
   function renderModulesTemplate(angular){
     var modulesTemplate = dot.template(grunt.file.read('templates/modules.def'));
     return modulesTemplate({
