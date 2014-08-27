@@ -9,6 +9,7 @@
 
 var angularModulesGraph = require('angular-modules-graph'),
   template = require('../src/graph-template'),
+  dots = require("dot");
   document = {}, window = {}, navigator = {};
 
 module.exports = function(grunt) {
@@ -34,15 +35,16 @@ module.exports = function(grunt) {
         }
       })
 
-      grunt.file.write(dest, grunt.template.process(template, {
-        data: {
-          modules: res.angular.modules,
-          modulesNames: res.angular.modulesNames,
-          options: options
-        }
-      }));
+      var modulesDiagram = templates.renderModulesTemplate(res.angular)
 
-      grunt.log.writeln("Generating", (grunt.log.wordlist(this.data.files[dest])).cyan, '->', (dest).cyan);
+      grunt.file.write('modules.dot', modulesDiagram);
+      grunt.log.writeln("Generating", ('modules.dot').cyan);
+      res.angular.modules.forEach(function (module) {
+        var moduleDiagram  = templates.renderModuleTemplate(module),
+            moduleFileName = 'module' + module.name + '.dot';
+        grunt.file.write(moduleFileName, moduleDiagram);
+        grunt.log.writeln("Generating", (moduleFileName).cyan);
+      });
     }
   });
 };

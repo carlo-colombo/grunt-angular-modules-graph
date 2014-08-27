@@ -1,6 +1,7 @@
-# grunt-angular-modules-graph
+# grunt-angular-architecture-graph
 
-> Generate modules dependencies graph in .dot format
+Generates angular projects dependencies graph (generated with angular-architecture-graph) in .dot format and .png formats.
+
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`

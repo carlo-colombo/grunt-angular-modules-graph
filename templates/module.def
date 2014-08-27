@@ -1,0 +1,19 @@
+digraph dependencies {
+  node[shape="record", style="filled"]
+  node[fillcolor="skyblue"]
+  {{~it.services :service:index}}
+   "{{= service.name }}"[label="{{{= service.name }}|{{= service.api.join('\n') }}}"]
+    {{~service.deps :dep:index2}}
+      "{{= dep }}" -> "{{= service.name }}"
+    {{~}}
+  {{~}}
+
+
+  node[fillcolor="khaki"]
+  {{~it.controllers :controller:index}}
+   "{{= controller.name }}"[label="{{= controller.name }}"]
+    {{~controller.deps :dep:index2}}
+      "{{= dep }}" -> "{{= controller.name }}"
+    {{~}}
+  {{~}}
+ }

@@ -1,0 +1,14 @@
+digraph dependencies {↩
+  node[shape="record" style="filled", fillcolor="grey90"]↩↩
+
+  {{~it.modules :module:index}}
+   "{{= module.name }}"[label="{{= module.name }}"]↩
+  {{~}}↩↩
+
+
+  {{~it.modules :module:index}}
+    {{~module.modules :dependency:index}}
+      "{{= module.name }}" -> "{{= dependency }}"↩
+    {{~}}
+  {{~}}↩↩
+ }
