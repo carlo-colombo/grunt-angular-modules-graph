@@ -1,4 +1,4 @@
-var dot = require('dot');
+var dot = require('../node_modules/dot/doT.js');
 
 dot.templateSettings.strip = false;
 
