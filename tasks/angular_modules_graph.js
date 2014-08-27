@@ -8,7 +8,8 @@
 
 
 var angularModulesGraph = require('angular-architecture-graph'),
-    templates = require('../src/diagrams-rendered')(grunt),
+    dot = require('dot'),
+    templates = require('../src/diagrams-rendered')(grunt, dot),
     document = {}, window = {}, navigator = {};
 
 module.exports = function(grunt) {
