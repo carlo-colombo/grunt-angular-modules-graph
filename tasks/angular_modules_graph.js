@@ -9,10 +9,10 @@
 
 var angularModulesGraph = require('angular-architecture-graph'),
     dot = require('dot'),
-    templates = require('../src/diagrams-rendered')(grunt, dot),
     document = {}, window = {}, navigator = {};
 
 module.exports = function(grunt) {
+  var templates = require('../src/diagrams-rendered')(grunt, dot);
   grunt.registerMultiTask('modules-graph', 'Generate modules dependencies graph in .dot format', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
