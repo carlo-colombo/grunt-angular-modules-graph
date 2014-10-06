@@ -10,23 +10,7 @@
 
 module.exports = function(grunt) {
 
-  grunt.initConfig({
-    watch: {
-      test: {
-        files: ['test/*.js', 'src/*.js'],
-        tasks: ['test']
-      }
-    },
-    mochaTest: {
-      test: {
-        src: ['test/*.js']
-      }
-    }
-  });
-
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha-test');
-
-  grunt.registerTask('test', ['mochaTest:test']);
+  require('load-grunt-tasks')(grunt);
+  require('load-grunt-config')(grunt);
 
 };

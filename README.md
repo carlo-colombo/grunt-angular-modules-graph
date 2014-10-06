@@ -1,123 +1,32 @@
-# grunt-angular-architecture-graph
+# Angular Architecture Graph
 
-Generates angular projects dependencies graph (generated with angular-architecture-graph) in .dot format and .png formats.
+This project is a node utility that analyses an angular project and exports a graph with the project's architecture: modules, controllers, directives and filters.
 
+[ ![Codeship Status for lucalanca/angular-modules-graph](https://www.codeship.io/projects/43e2f770-0ead-0132-1978-5ad6f07ad273/status)](https://www.codeship.io/projects/32481)
 
-## Getting Started
-This plugin requires Grunt `~0.4.2`
+## How to use it:
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+1. Require the module:
 
-```shell
-npm install grunt-angular-modules-graph --save-dev
-```
+  ```js
+  var angularArchitectureGraph = require('angular-architecture-graph'),
+  ])
+  ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+2. Call it with your project code:
 
-```js
-grunt.loadNpmTasks('grunt-angular-modules-graph');
-```
+  ```js
+  var architecture = angularArchitectureGraph([
+    { id: 'file1.js', text: '<angular code here in a string>' },
+    { id: 'file2.js', text: '<angular code here in a string>' }
+  ])
+  ```
 
-## The "modules-graph" task
+3. Do whatever you want with the resulted architecture object
 
-### Overview
-In your project's Gruntfile, add a section named `modules-graph` to the data object passed into `grunt.initConfig()`.
+## About
 
-```js
-grunt.initConfig({
-  'modules-graph': {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      files: {
-        'destination-file.dot': ['src/*.js']
-      }
-    },
-  },
-});
-```
+This project was originally forked from , extracted from [@carlo-colombo's](https://github.com/carlo-colombo) [angular-modules-graph](https://github.com/carlo-colombo/angular-modules-graph)
 
-### Options
-
-#### options.externalDependenciesColor
-Type: `String`
-Default value: `'red'`
-
-A string value that to set external dependencies link color
-
-### Usage Examples
-
-#### Sample of modules definitions pattern supported
-
-```js
-//even different files
-angular.module('module1',[])
-  .controller('testController', angular.noop)
-
-angular.module('module1')
-  .factory('testFactory', angular.noop)
-
-//same file
-(function(){
-  var module3 = angular.module('module3',[])
-  module3.value('aValue', 42)
-}())
-
-(function(module){
-  module.constant('foo', 42)
-}(angular.module('module2',['module1', 'module3'])))
-```
-#### Restrictions
-#####does not handle global defined modules
-
-```js
-//fileA.js
-window.module1 = angular.module('testModule1',[])
-//fileB.js
-window.module1.controller('testContoller', angular.noop)
-```
-
-#### Default Options
-
-```js
-grunt.initConfig({
-  'modules-graph': {
-    options: {
-      externalDependenciesColor:'red'
-    },
-    files: {
-      'dest/dependency-graph.dot': ['src/testing.js', 'src/**/*.js'],
-    },
-  },
-});
-```
-
-### Example: render graph with grunt-graphviz
-```shell
-npm install grunt-graphviz --save-dev
-```
-```js
-grunt.loadNpmTasks('grunt-graphviz');
-
-grunt.initConfig({
-  graphviz: {
-    dependencies: {
-      files: {
-        'dependencies-graph.png': 'dependencies-graph.dot'
-      }
-    },
-  }
-})
-```
-
-### Example
-https://github.com/angular-ui/bootstrap example dependencies graph (partial)
-![angular-ui/bootstrap ](angular-ui-bootstrap-modules-graph.png "angular-ui/bootstrap Dependencies graph")
-
-## Release History
-- 0.2.3 catching errors, logs for skipped files and task completion
-- 0.2.2 added angular global api (noop, identiy, element, ...)
-- 0.2.1 window, document, navigator in global scope
-- 0.2.0 modules can be requested before module definition (allow requesting modules in more than 1 file)
-- 0.1.0 first release
+## License:
+MIT

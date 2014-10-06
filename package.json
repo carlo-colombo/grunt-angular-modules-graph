@@ -1,50 +1,45 @@
 {
-  "name": "grunt-angular-modules-graph",
-  "description": "Generate modules dependencies graph in .dot format",
-  "version": "0.3.1",
-  "homepage": "https://github.com/carlo-colombo/grunt-angular-modules-graph",
-  "author": {
-    "name": "Carlo Colombo",
-    "email": "carlo.colombo@gmx.com"
+  "name": "angular-architecture-graph",
+  "version": "0.2.0",
+  "description": "Create a graph of an angular project's architecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
   },
+  "keywords": [
+    "angular",
+    "architecture",
+    "graph"
+  ],
+  "author": "João Figueiredo <@lucalanca>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/carlo-colombo/grunt-angular-modules-graph.git"
+    "url": "git://github.com/lucalanca/angular-architecture-graph.git"
   },
   "bugs": {
-    "url": "https://github.com/carlo-colombo/grunt-angular-modules-graph/issues"
+    "url": "https://github.com/lucalanca/angular-architecture-graph/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/carlo-colombo/grunt-angular-modules-graph/blob/master/LICENSE-MIT"
+      "url": "https://github.com/lucalanca/angular-architecture-graph/blob/master/LICENSE-MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^1.1.0",
     "grunt-mocha-test": "^0.10.0",
+    "grunt-publish": "0.0.5",
+    "load-grunt-config": "^0.13.1",
+    "load-grunt-tasks": "^0.6.0",
     "mocha": "^1.18.2",
+    "nodegit": "^0.1.4",
+    "q-io": "^1.11.5",
     "should": "^3.2.0"
   },
-  "peerDependencies": {
-    "grunt": "~0.4.2"
-  },
-  "keywords": [
-    "gruntplugin",
-    "angular",
-    "dot",
-    "graphviz",
-    "modules"
-  ],
   "dependencies": {
-    "angular-architecture-graph": "~0.1.0",
-    "dot": "^1.0.2"
+    "lodash": "^2.4.1",
+    "pluralize": "^1.0.2"
   }
 }
