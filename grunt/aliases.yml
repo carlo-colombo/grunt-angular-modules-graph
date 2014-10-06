@@ -1,7 +1,0 @@
-default:
-  - eslint
-  - mochaTest:test
-
-test:
-  - eslint
-  - mochaTest:test
