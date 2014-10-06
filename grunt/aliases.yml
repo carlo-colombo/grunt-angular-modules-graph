@@ -1,0 +1,16 @@
+# By default, lint and run all tests.
+default:
+  - linters
+  - test
+
+# Whenever the "test" task is run, first clean the "tmp" dir, then run this
+# plugin's task(s), then test the result.
+test:
+  - linters
+  - clean
+  - angular_architecture_graph
+  - nodeunit
+
+linters:
+  # - jshint
+  - eslint

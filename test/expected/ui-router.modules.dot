@@ -1,0 +1,18 @@
+digraph dependencies {
+  node[shape="record",style="filled", fillcolor="grey90"]
+
+    "ui.router.util"[label="ui.router.util"]
+    "ui.router.router"[label="ui.router.router"]
+    "ui.router.state"[label="ui.router.state"]
+    "ui.router"[label="ui.router"]
+    "ui.router.compat"[label="ui.router.compat"]
+
+
+    "ng" -> "ui.router.util"
+    "ui.router.util" -> "ui.router.router"
+    "ui.router.router" -> "ui.router.state"
+    "ui.router.util" -> "ui.router.state"
+    "ui.router.state" -> "ui.router"
+    "ui.router" -> "ui.router.compat"
+
+}

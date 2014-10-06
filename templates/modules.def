@@ -1,0 +1,10 @@
+digraph dependencies {
+  node[shape="record",style="filled", fillcolor="grey90"]
+
+    {{~it.modules :module}}"{{= module.name }}"[label="{{= module.name }}"]
+    {{~}}
+
+    {{~it.modules :module}}{{~module.modules :dependency}}"{{= dependency }}" -> "{{= module.name }}"{{~}}
+
+    {{~}}
+}

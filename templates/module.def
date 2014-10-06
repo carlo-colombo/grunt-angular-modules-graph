@@ -1,0 +1,33 @@
+digraph dependencies {
+  node[shape="record",style="filled", fillcolor="grey90"]
+
+    "{{= it.name }}"[label="{{= it.name }}"]
+
+    node[shape="record",style="filled", fillcolor="blue"]
+    {{~it.providers :provider}}"{{= provider.name }}"[label="{{= provider.name }}"]
+    {{~}}
+
+    node[shape="record",style="filled", fillcolor="yellow"]
+    {{~it.directives :directive}}"{{= directive.name }}"[label="{{= directive.name }}"]
+    {{~}}
+
+    node[shape="record",style="filled", fillcolor="red"]
+    {{~it.controllers :controller}}"{{= controller.name }}"[label="{{= controller.name }}"]
+    {{~}}
+
+    node[shape="record",style="filled", fillcolor="green"]
+    {{~it.services :service}}"{{= service.name }}"[label="{{= service.name }}"]
+    {{~}}
+
+    node[shape="record",style="filled", fillcolor="pink"]
+    {{~it.factories :factory}}"{{= factory.name }}"[label="{{= factory.name }}"]
+    {{~}}
+
+
+    node[shape="record",style="filled", fillcolor="brown"]
+    {{~it.filters :filter}}"{{= filter.name }}"[label="{{= filter.name }}"]
+    {{~}}
+
+
+
+}
