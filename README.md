@@ -1,6 +1,6 @@
 # grunt-angular-architecture-graph
 
-> reate graphs of your angular projects using angular-architecture-graph.
+> Create graphs of your angular projects using angular-architecture-graph.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
