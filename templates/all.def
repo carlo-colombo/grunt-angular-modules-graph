@@ -1,46 +1,40 @@
 digraph dependencies {
-  node[shape="record",style="filled", fillcolor="grey90"]
+  node[shape="ellipse",style="filled",colorscheme=paired12]
 
     {{~it.modules :module}}
-      "{{= module.name }}"[label="{{= module.name }}"]
+      "{{= module.name }}"[label="{{= module.name }}", color=1]
     {{~}}
 
     {{~it.modules :module}}
       {{~module.modules :dependency}}
-        "{{= module.name }}" -> "{{= dependency }}"
+        "{{= dependency }}" -> "{{= module.name }}"
       {{~}}
     {{~}}
 
     {{~it.modules :module}}
-      node[shape="record",style="filled", fillcolor="blue"]
       {{~module.providers :provider}}
-        "{{= module.name + "." + provider.name }}"[label="{{= provider.name }}"]
+        "{{= module.name + "." + provider.name }}"[label="{{= provider.name }}", color=2]
       {{~}}
 
-      node[shape="record",style="filled", fillcolor="yellow"]
       {{~module.directives :directive}}
-        "{{= module.name + "." + directive.name }}"[label="{{= directive.name }}"]
+        "{{= module.name + "." + directive.name }}"[label="{{= directive.name }}", color=3]
       {{~}}
 
-      node[shape="record",style="filled", fillcolor="red"]
       {{~module.controllers :controller}}
-        "{{= module.name + "." + controller.name }}"[label="{{= controller.name }}"]
+        "{{= module.name + "." + controller.name }}"[label="{{= controller.name }}", color=4]
       {{~}}
 
-      node[shape="record",style="filled", fillcolor="green"]
       {{~module.services :service}}
-        "{{= module.name + "." + service.name }}"[label="{{= service.name }}"]
+        "{{= module.name + "." + service.name }}"[label="{{= service.name }}", color=5]
       {{~}}
 
-      node[shape="record",style="filled", fillcolor="pink"]
       {{~module.factories :factory}}
-        "{{= module.name + "." + factory.name }}"[label="{{= factory.name }}"]
+        "{{= module.name + "." + factory.name }}"[label="{{= factory.name }}", color=6]
       {{~}}
 
 
-      node[shape="record",style="filled", fillcolor="brown"]
       {{~module.filters :filter}}
-        "{{= module.name + "." + filter.name }}"[label="{{= filter.name }}"]
+        "{{= module.name + "." + filter.name }}"[label="{{= filter.name }}", color=7]
       {{~}}
 
 
@@ -82,8 +76,7 @@ digraph dependencies {
 
 
 
-
-      node[shape="record",style="filled", fillcolor="grey50"]
+      node[shape="ellipse",style="filled", color=8]
       {{~module.providers :provider}}
         {{~provider.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]

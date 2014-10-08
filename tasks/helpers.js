@@ -53,11 +53,11 @@ module.exports = function (grunt) {
    * @param  {[type]} result [description]
    * @return {[type]}        [description]
    */
-  function generateGraphFiles (angular) {
-    generateAllGraph(angular);
-    generateModulesGraph(angular);
+  function generateGraphFiles (angular, files) {
+    generateAllGraph(angular, files);
+    generateModulesGraph(angular, files);
     angular.modules.forEach(function (module) {
-      generateModuleGraph(module);
+      generateModuleGraph(module, files);
     });
     return angular;
   }
@@ -67,25 +67,24 @@ module.exports = function (grunt) {
    *-------------------
    */
 
-  function generateAllGraph (angular) {
+  function generateAllGraph (angular, files) {
     var allResult = templates.allTemplate({
       modules: angular.modules
     });
-    grunt.file.write("tmp/all.ui-router.dot", allResult);
+
+    grunt.file.write(files.dest + "/all.dot", allResult);
   }
 
-  function generateModulesGraph (angular) {
+  function generateModulesGraph (angular, files) {
     var modulesResult = templates.modulesTemplate({
         modules: angular.modules
     });
-
-    grunt.file.write("tmp/ui-router.modules.dot", modulesResult);
+    grunt.file.write(files.dest + "/modules.dot", modulesResult);
   }
 
-  function generateModuleGraph (module) {
+  function generateModuleGraph (module, files) {
     var moduleResult = templates.moduleTemplate(module);
-
-    grunt.file.write("tmp/ui-router.module." + module.name + ".dot", moduleResult);
+    grunt.file.write(files.dest + "/modules/" + module.name + ".dot", moduleResult);
   }
 
 

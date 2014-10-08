@@ -1,33 +1,98 @@
 digraph dependencies {
-  node[shape="record",style="filled", fillcolor="grey90"]
+  node[shape="ellipse",style="filled",colorscheme=paired12]
+    "{{= it.name }}"[label="{{= it.name }}", color=1]
 
-    "{{= it.name }}"[label="{{= it.name }}"]
-
-    node[shape="record",style="filled", fillcolor="blue"]
-    {{~it.providers :provider}}"{{= provider.name }}"[label="{{= provider.name }}"]
+    {{~it.modules :dep}}
+      "{{= dep }}"[label="{{= dep }}", color=2]
+      "{{= dep }}" -> "{{= it.name }}"
     {{~}}
 
-    node[shape="record",style="filled", fillcolor="yellow"]
-    {{~it.directives :directive}}"{{= directive.name }}"[label="{{= directive.name }}"]
+    {{~it.providers :provider}}
+      "{{= provider.name }}"[label="{{= provider.name }}", fillcolor=3]
+      "{{= it.name }}" -> "{{= provider.name }}"
     {{~}}
 
-    node[shape="record",style="filled", fillcolor="red"]
-    {{~it.controllers :controller}}"{{= controller.name }}"[label="{{= controller.name }}"]
+    {{~it.directives :directive}}
+      "{{= directive.name }}"[label="{{= directive.name }}", color=4]
+      "{{= it.name }}" -> "{{= directive.name }}"
     {{~}}
 
-    node[shape="record",style="filled", fillcolor="green"]
-    {{~it.services :service}}"{{= service.name }}"[label="{{= service.name }}"]
+    {{~it.controllers :controller}}
+      "{{= controller.name }}"[label="{{= controller.name }}", color=5]
+      "{{= it.name }}" -> "{{= controller.name }}"
     {{~}}
 
-    node[shape="record",style="filled", fillcolor="pink"]
-    {{~it.factories :factory}}"{{= factory.name }}"[label="{{= factory.name }}"]
+    {{~it.services :service}}
+      "{{= service.name }}"[label="{{= service.name }}", color=6]
+      "{{= it.name }}" -> "{{= service.name }}"
+    {{~}}
+
+    {{~it.factories :factory}}
+      "{{= factory.name }}"[label="{{= factory.name }}", color=7]
+      "{{= it.name }}" -> "{{= factory.name }}"
     {{~}}
 
 
-    node[shape="record",style="filled", fillcolor="brown"]
-    {{~it.filters :filter}}"{{= filter.name }}"[label="{{= filter.name }}"]
+    {{~it.filters :filter}}
+      "{{= filter.name }}"[label="{{= filter.name }}", color=8]
+      "{{= it.name }}" -> "{{= filter.name }}"
     {{~}}
 
+
+
+
+
+
+
+
+
+
+
+
+
+    node[shape="ellipse",style="filled", color=9]
+    {{~it.providers :provider}}
+      {{~provider.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= provider.name }}"
+      {{~}}
+    {{~}}
+
+    {{~it.directives :directive}}
+      {{~directive.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= directive.name }}"
+      {{~}}
+    {{~}}
+
+
+    {{~it.controllers :controller}}
+      {{~controller.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= controller.name }}"
+      {{~}}
+    {{~}}
+
+    {{~it.services :service}}
+      {{~service.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= service.name }}"
+      {{~}}
+    {{~}}
+
+    {{~it.factories :factory}}
+      {{~factory.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= factory.name }}"
+      {{~}}
+    {{~}}
+
+    {{~it.filters :filter}}
+      {{~filter.deps :dep}}
+        "{{= dep }}"[label="{{= dep }}"]
+        "{{= dep }}" -> "{{= filter.name }}"
+      {{~}}
+    {{~}}
 
 
 }

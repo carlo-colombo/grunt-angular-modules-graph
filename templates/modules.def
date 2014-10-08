@@ -1,10 +1,14 @@
 digraph dependencies {
-  node[shape="record",style="filled", fillcolor="grey90"]
+  node[shape="ellipse",style="filled",colorscheme=paired12]
 
-    {{~it.modules :module}}"{{= module.name }}"[label="{{= module.name }}"]
+  {{~it.modules :module}}
+    "{{= module.name }}"[label="{{= module.name }}", color=1]
+  {{~}}
+
+  node[shape="ellipse",style="filled",color=2]
+  {{~it.modules :module}}
+    {{~module.modules :dependency}}
+      "{{= dependency }}" -> "{{= module.name }}"
     {{~}}
-
-    {{~it.modules :module}}{{~module.modules :dependency}}"{{= dependency }}" -> "{{= module.name }}"{{~}}
-
-    {{~}}
+  {{~}}
 }

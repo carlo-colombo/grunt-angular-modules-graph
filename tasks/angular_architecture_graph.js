@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       var codebaseArchitecture = Helpers.analyseFiles(parsedFiles);
 
       // 3. Generate .dot files
-      Helpers.generateGraphFiles(codebaseArchitecture);
+      Helpers.generateGraphFiles(codebaseArchitecture, f);
     });
 
   });

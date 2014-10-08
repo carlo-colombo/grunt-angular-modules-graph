@@ -2,12 +2,12 @@
 module.exports = {
   uiRouter: {
     files: {
-      "tmp/uiRouter.js": ["test/fixtures/ui-router.js"]
+      "tmp/uiRouter": ["test/fixtures/ui-router.js"]
     }
   },
   uiBootstrap: {
     files: {
-      "tmp/uiBootstrap.js": ["test/fixtures/ui-bootstrap.js"]
+      "tmp/uiBootstrap": ["test/fixtures/ui-bootstrap.js"]
     }
   }
 };
