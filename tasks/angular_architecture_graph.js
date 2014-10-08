@@ -28,6 +28,9 @@ module.exports = function(grunt) {
 
       // 3. Generate .dot files
       Helpers.generateGraphFiles(codebaseArchitecture, f);
+
+      // 4. Generate diagram files
+      Helpers.renderDotFiles(f);
     });
 
   });
