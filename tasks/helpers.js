@@ -89,7 +89,7 @@ module.exports = function (grunt) {
 
     // Add configuration and run graphviz task
     grunt.config.merge(config);
-    grunt.task.run(['graphviz']);
+    grunt.task.run(["graphviz"]);
   }
 
   /*-------------------
