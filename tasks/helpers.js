@@ -46,8 +46,9 @@ module.exports = function (grunt) {
     });
   }
 
-  function analyseFiles (files) {
-    return architectureGraph(files).angular;
+  function analyseFiles (files, options) {
+    var graph = architectureGraph(files, options);
+    return graph.angular;
   }
 
   /**

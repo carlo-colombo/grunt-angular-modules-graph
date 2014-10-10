@@ -14,8 +14,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask("angular_architecture_graph", "Create graphs of your angular projects using angular-architecture-graph.", function() {
     var options = this.options({
-      punctuation: ".",
-      separator: ", "
+      hideAngularServices: true
     });
     grunt.log.writeln(options);
 
@@ -24,7 +23,7 @@ module.exports = function(grunt) {
       var parsedFiles = Helpers.parseSrcFiles(f);
 
       // 2. Get codebase graph using angular-architecture graph
-      var codebaseArchitecture = Helpers.analyseFiles(parsedFiles);
+      var codebaseArchitecture = Helpers.analyseFiles(parsedFiles, options);
 
       // 3. Generate .dot files
       Helpers.generateGraphFiles(codebaseArchitecture, f);

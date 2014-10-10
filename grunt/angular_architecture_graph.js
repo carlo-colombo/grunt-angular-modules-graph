@@ -3,6 +3,9 @@ module.exports = {
   uiRouter: {
     files: {
       "tmp/uiRouter": ["test/fixtures/ui-router.js"]
+    },
+    options: {
+      hideAngularServices: true
     }
   },
   uiBootstrap: {
