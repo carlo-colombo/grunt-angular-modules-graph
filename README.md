@@ -38,7 +38,11 @@ grunt.initConfig({
 
 #### Demos
 - ui-router
-![angular-ui/ui-router ](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/all.ui-router.jpeg "angular-ui/ui-router Dependencies graph")
+![angular-ui/ui-router overview](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.all.png "angular-ui/ui-router Dependencies graph")
+
+![angular-ui/ui-router state module](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.state.png "angular-ui/ui-router Dependencies graph")
+
+![angular-ui/ui-router util module](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.util.png "angular-ui/ui-router Dependencies graph")
 
 - ui-bootstrap
 ![angular-ui/bootstrap ](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/all.ui-bootstrap.jpeg "angular-ui/bootstrap Dependencies graph")
@@ -46,17 +50,12 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.hideAngularServices
+Type: `Boolean`
+Default value: `true`
 
-A string value that is used to do something with whatever.
+A boolean value that shows angular services (e.g. $http, $q) as dependencies when set to false.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
 
 ### Usage Examples
 
@@ -81,8 +80,7 @@ In this example, custom options are used to do something else with whatever else
 grunt.initConfig({
   angular_architecture_graph: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      hideAngularServices: true,
     },
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
