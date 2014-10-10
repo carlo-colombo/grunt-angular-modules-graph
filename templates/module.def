@@ -1,46 +1,60 @@
 digraph dependencies {
-  node[shape="ellipse",style="filled",colorscheme=paired12]
+  node[shape="component",style="filled",colorscheme=paired12]
+
+
+    node[shape="component"]
+    "legend.module"[label="modules", color=1]
+    node[shape="ellipse"]
+    "legend.provider"   [label="providers", color=2]
+    "legend.controllers"[label="controllers", color=4]
+    "legend.services"   [label="services", color=5]
+    "legend.factories"  [label="factories", color=6]
+    node[shape="cds"]
+    "legend.filters"    [label="filters", color=7]
+    "legend.directives" [label="directives", color=3]
+
+
+    node[shape="component"]
     "{{= it.name }}"[label="{{= it.name }}", color=1]
 
     {{~it.modules :dep}}
-      "{{= dep }}"[label="{{= dep }}", color=2]
+      "{{= dep }}"[label="{{= dep }}", color=1]
       "{{= dep }}" -> "{{= it.name }}"
     {{~}}
 
+
+    node[shape="ellipse"]
     {{~it.providers :provider}}
-      "{{= provider.name }}"[label="{{= provider.name }}", fillcolor=3]
+      "{{= provider.name }}"[label="{{= provider.name }}", fillcolor=2]
       "{{= it.name }}" -> "{{= provider.name }}"
     {{~}}
 
-    {{~it.directives :directive}}
-      "{{= directive.name }}"[label="{{= directive.name }}", color=4]
-      "{{= it.name }}" -> "{{= directive.name }}"
-    {{~}}
 
     {{~it.controllers :controller}}
-      "{{= controller.name }}"[label="{{= controller.name }}", color=5]
+      "{{= controller.name }}"[label="{{= controller.name }}", color=4]
       "{{= it.name }}" -> "{{= controller.name }}"
     {{~}}
 
     {{~it.services :service}}
-      "{{= service.name }}"[label="{{= service.name }}", color=6]
+      "{{= service.name }}"[label="{{= service.name }}", color=5]
       "{{= it.name }}" -> "{{= service.name }}"
     {{~}}
 
     {{~it.factories :factory}}
-      "{{= factory.name }}"[label="{{= factory.name }}", color=7]
+      "{{= factory.name }}"[label="{{= factory.name }}", color=6]
       "{{= it.name }}" -> "{{= factory.name }}"
     {{~}}
 
-
+    node[shape="cds"]
     {{~it.filters :filter}}
-      "{{= filter.name }}"[label="{{= filter.name }}", color=8]
+      "{{= filter.name }}"[label="{{= filter.name }}", color=7]
       "{{= it.name }}" -> "{{= filter.name }}"
     {{~}}
 
-
-
-
+    {{~it.directives :directive}}
+      "{{= directive.name }}"[label="{{= directive.name }}", color=3]
+      "{{= it.name }}" -> "{{= directive.name }}"
+    {{~}}
 
 
 

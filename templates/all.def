@@ -12,6 +12,8 @@ digraph dependencies {
     "legend.filters"    [label="filters", color=7]
     "legend.directives" [label="directives", color=3]
 
+
+    node[shape="component"]
     {{~it.modules :module}}
       "{{= module.name }}"[label="{{= module.name }}", color=1]
     {{~}}
