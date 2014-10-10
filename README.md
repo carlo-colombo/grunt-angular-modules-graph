@@ -1,4 +1,5 @@
-# grunt-angular-architecture-graph
+# grunt-angular-architecture-graph [![Build Status](https://travis-ci.org/lucalanca/grunt-angular-modules-graph.png?branch=master)](https://travis-ci.org/lucalanca/grunt-angular-modules-graph)
+
 
 > Create graphs of your angular projects using angular-architecture-graph.
 
