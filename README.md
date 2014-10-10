@@ -47,7 +47,10 @@ grunt.initConfig({
 ![angular-ui/ui-router util module](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.util.png "angular-ui/ui-router Dependencies graph")
 
 - ui-bootstrap
-![angular-ui/bootstrap ](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/all.ui-bootstrap.jpeg "angular-ui/bootstrap Dependencies graph")
+![angular-ui/bootstrap ](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/all.ui-bootstrap.png "angular-ui/bootstrap Dependencies graph")
+
+- ui-bootstrap ui.bootstrap.tooltip module
+![angular-ui/bootstrap tooltip module ](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.bootstrap.tooltip.png "angular-ui/bootstrap Dependencies graph")
 
 
 ### Options
