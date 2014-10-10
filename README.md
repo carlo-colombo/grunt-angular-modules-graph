@@ -37,11 +37,13 @@ grunt.initConfig({
 ```
 
 #### Demos
-- ui-router
+- ui-router overview diagram
 ![angular-ui/ui-router overview](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.all.png "angular-ui/ui-router Dependencies graph")
 
+- ui-router ui.router.state module
 ![angular-ui/ui-router state module](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.state.png "angular-ui/ui-router Dependencies graph")
 
+- ui-router ui.router.util module
 ![angular-ui/ui-router util module](https://raw.githubusercontent.com/lucalanca/grunt-angular-modules-graph/master/docs/images/ui.router.util.png "angular-ui/ui-router Dependencies graph")
 
 - ui-bootstrap
