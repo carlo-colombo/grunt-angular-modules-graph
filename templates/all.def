@@ -1,5 +1,16 @@
 digraph dependencies {
-  node[shape="ellipse",style="filled",colorscheme=paired12]
+  node[shape="component",style="filled",colorscheme=paired12]
+
+    node[shape="component"]
+    "legend.module"[label="modules", color=1]
+    node[shape="ellipse"]
+    "legend.provider"   [label="providers", color=2]
+    "legend.controllers"[label="controllers", color=4]
+    "legend.services"   [label="services", color=5]
+    "legend.factories"  [label="factories", color=6]
+    node[shape="cds"]
+    "legend.filters"    [label="filters", color=7]
+    "legend.directives" [label="directives", color=3]
 
     {{~it.modules :module}}
       "{{= module.name }}"[label="{{= module.name }}", color=1]
@@ -7,63 +18,68 @@ digraph dependencies {
 
     {{~it.modules :module}}
       {{~module.modules :dependency}}
-        "{{= dependency }}" -> "{{= module.name }}"
+        "{{= module.name }}" -> "{{= dependency }}"
       {{~}}
     {{~}}
 
+    node[shape="ellipse"]
+
+
     {{~it.modules :module}}
       {{~module.providers :provider}}
-        "{{= module.name + "." + provider.name }}"[label="{{= provider.name }}", color=2]
-      {{~}}
-
-      {{~module.directives :directive}}
-        "{{= module.name + "." + directive.name }}"[label="{{= directive.name }}", color=3]
+        "{{= provider.name }}"[label="{{= provider.name }}", color=2]
       {{~}}
 
       {{~module.controllers :controller}}
-        "{{= module.name + "." + controller.name }}"[label="{{= controller.name }}", color=4]
+        "{{= controller.name }}"[label="{{= controller.name }}", color=4]
       {{~}}
 
       {{~module.services :service}}
-        "{{= module.name + "." + service.name }}"[label="{{= service.name }}", color=5]
+        "{{= service.name }}"[label="{{= service.name }}", color=5]
       {{~}}
 
       {{~module.factories :factory}}
-        "{{= module.name + "." + factory.name }}"[label="{{= factory.name }}", color=6]
+        "{{= factory.name }}"[label="{{= factory.name }}", color=6]
       {{~}}
 
+
+      node[shape="cds"]
 
       {{~module.filters :filter}}
-        "{{= module.name + "." + filter.name }}"[label="{{= filter.name }}", color=7]
+        "{{= filter.name }}"[label="{{= filter.name }}", color=7]
+      {{~}}
+
+      {{~module.directives :directive}}
+        "{{= directive.name }}"[label="{{= directive.name }}", color=3]
       {{~}}
 
 
 
 
 
-
+      node[shape="ellipse"]
       {{~module.providers :provider}}
-        "{{= module.name }}" -> "{{= module.name + "." + provider.name }}"
+        "{{= module.name }}" -> "{{= provider.name }}"
       {{~}}
 
       {{~module.directives :directive}}
-        "{{= module.name }}" -> "{{= module.name + "." + directive.name }}"
+        "{{= module.name }}" -> "{{= directive.name }}"
       {{~}}
 
       {{~module.controllers :controller}}
-        "{{= module.name }}" -> "{{= module.name + "." + controller.name }}"
+        "{{= module.name }}" -> "{{= controller.name }}"
       {{~}}
 
       {{~module.services :service}}
-        "{{= module.name }}" -> "{{= module.name + "." + service.name }}"
+        "{{= module.name }}" -> "{{= service.name }}"
       {{~}}
 
       {{~module.factories :factory}}
-        "{{= module.name }}" -> "{{= module.name + "." + factory.name }}"
+        "{{= module.name }}" -> "{{= factory.name }}"
       {{~}}
 
       {{~module.filters :filter}}
-        "{{= module.name }}" -> "{{= module.name + "." + filter.name }}"
+        "{{= module.name }}" -> "{{= filter.name }}"
       {{~}}
 
 
@@ -80,45 +96,44 @@ digraph dependencies {
       {{~module.providers :provider}}
         {{~provider.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + provider.name }}"
+          "{{= dep }}" -> "{{= provider.name }}"
         {{~}}
       {{~}}
 
       {{~module.directives :directive}}
         {{~directive.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + directive.name }}"
+          "{{= dep }}" -> "{{= directive.name }}"
         {{~}}
       {{~}}
 
       {{~module.controllers :controller}}
         {{~controller.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + controller.name }}"
+          "{{= dep }}" -> "{{= controller.name }}"
         {{~}}
       {{~}}
 
       {{~module.services :service}}
         {{~service.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + service.name }}"
+          "{{= dep }}" -> "{{= service.name }}"
         {{~}}
       {{~}}
 
       {{~module.factories :factory}}
         {{~factory.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + factory.name }}"
+          "{{= dep }}" -> "{{= factory.name }}"
         {{~}}
       {{~}}
 
       {{~module.filters :filter}}
         {{~filter.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]
-          "{{= dep }}" -> "{{= module.name + "." + filter.name }}"
+          "{{= dep }}" -> "{{= filter.name }}"
         {{~}}
       {{~}}
-
 
     {{~}}
 }
