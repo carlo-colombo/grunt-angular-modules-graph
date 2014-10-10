@@ -44,7 +44,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "angular-architecture-graph": "^0.2.0",
+    "angular-architecture-graph": "0.2.2",
     "dot": "^1.0.2"
   }
 }
