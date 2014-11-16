@@ -26,12 +26,11 @@ In your project's Gruntfile, add a section named `angular_architecture_graph` to
 ```js
 grunt.initConfig({
   angular_architecture_graph: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    diagram: {
+      files: {
+        'yourProjectNameGoesHere': [ 'PATH/TO/YOUR/DIST/FILE.JS' ]
+      }
+    }
   },
 });
 ```
