@@ -8,10 +8,13 @@ dot.templateSettings.strip = false;
 
 module.exports = function (grunt) {
 
+  grunt.file.setBase(__dirname);
+  grunt.loadNpmTasks('grunt-graphviz');
+
   var templates = {
-    allTemplate:     dot.template(grunt.file.read("templates/all.def")),
-    modulesTemplate: dot.template(grunt.file.read("templates/modules.def")),
-    moduleTemplate:  dot.template(grunt.file.read("templates/module.def"))
+    allTemplate:     dot.template(grunt.file.read("../templates/all.def")),
+    modulesTemplate: dot.template(grunt.file.read("../templates/modules.def")),
+    moduleTemplate:  dot.template(grunt.file.read("../templates/module.def"))
   };
 
 
