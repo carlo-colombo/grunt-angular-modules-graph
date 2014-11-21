@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   var basePath = "node_modules/grunt-angular-architecture-graph/";
 
   var templates = {
+    legendTemplate:  dot.template(grunt.file.read(basePath + "templates/legend.def")),
     allTemplate:     dot.template(grunt.file.read(basePath + "templates/all.def")),
     modulesTemplate: dot.template(grunt.file.read(basePath + "templates/modules.def")),
     moduleTemplate:  dot.template(grunt.file.read(basePath + "templates/module.def"))
@@ -61,6 +62,7 @@ module.exports = function (grunt) {
    * @return {[type]}        [description]
    */
   function generateGraphFiles (angular, files) {
+    generateLegendGraph(files);
     generateAllGraph(angular, files);
     generateModulesGraph(angular, files);
     angular.modules.forEach(function (module) {
@@ -101,6 +103,12 @@ module.exports = function (grunt) {
    * Private
    *-------------------
    */
+
+  function generateLegendGraph (files) {
+    var legendResult = templates.legendTemplate();
+
+    grunt.file.write(files.dest + "/dot/legend.dot", legendResult);
+  }
 
   function generateAllGraph (angular, files) {
     var allResult = templates.allTemplate({

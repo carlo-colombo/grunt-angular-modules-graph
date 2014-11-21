@@ -2,18 +2,6 @@ digraph dependencies {
   node[shape="component",style="filled",colorscheme=paired12]
 
     node[shape="component"]
-    "legend.module"[label="modules", color=1]
-    node[shape="ellipse"]
-    "legend.provider"   [label="providers", color=2]
-    "legend.controllers"[label="controllers", color=4]
-    "legend.services"   [label="services", color=5]
-    "legend.factories"  [label="factories", color=6]
-    node[shape="cds"]
-    "legend.filters"    [label="filters", color=7]
-    "legend.directives" [label="directives", color=3]
-
-
-    node[shape="component"]
     {{~it.modules :module}}
       "{{= module.name }}"[label="{{= module.name }}", color=1]
     {{~}}
