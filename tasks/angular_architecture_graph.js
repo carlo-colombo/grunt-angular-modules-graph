@@ -14,9 +14,13 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask("angular_architecture_graph", "Create graphs of your angular projects using angular-architecture-graph.", function() {
     var options = this.options({
-      hideAngularServices: true
+      hideAngularServices: true,
+	  shapeModules: 'component',
+	  shapeFactories: 'ellipse',
+	  shapeDirectives: 'cds'
     });
-    grunt.log.writeln(options);
+
+	Helpers.preprocessTemplates (options);
 
     this.files.forEach(function (f) {
       // 1. Parse Files

@@ -1,7 +1,7 @@
 digraph dependencies {
   node[shape="component",style="filled",colorscheme=paired12]
 
-    node[shape="component"]
+    node[shape="{1}"]
     {{~it.modules :module}}
       "{{= module.name }}"[label="{{= module.name }}", color=1]
     {{~}}
@@ -12,7 +12,7 @@ digraph dependencies {
       {{~}}
     {{~}}
 
-    node[shape="ellipse"]
+    node[shape="{2}"]
 
 
     {{~it.modules :module}}
@@ -33,7 +33,7 @@ digraph dependencies {
       {{~}}
 
 
-      node[shape="cds"]
+      node[shape="{3}"]
 
       {{~module.filters :filter}}
         "{{= filter.name }}"[label="{{= filter.name }}", color=7]
@@ -47,7 +47,7 @@ digraph dependencies {
 
 
 
-      node[shape="ellipse"]
+      node[shape="{2}"]
       {{~module.providers :provider}}
         "{{= module.name }}" -> "{{= provider.name }}"
       {{~}}
@@ -82,7 +82,7 @@ digraph dependencies {
 
 
 
-      node[shape="ellipse",style="filled", color=8]
+      node[shape="{2}",style="filled", color=8]
       {{~module.providers :provider}}
         {{~provider.deps :dep}}
           "{{= dep }}"[label="{{= dep }}"]

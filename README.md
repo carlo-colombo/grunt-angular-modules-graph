@@ -64,9 +64,57 @@ A boolean value that shows angular services (e.g. $http, $q) as dependencies whe
 hideAngularServices: false
 ```
 
+#### options.shapeModules
+Type: `String`
+Default value: `component`
+
+A string value that allows you to change the default shape used for
+
+ * module
+
+nodes.
+
+```js
+shapeModules: 'triangle'
+```
+
+#### options.shapeFactories
+Type: `String`
+Default value: `ellipse`
+
+A string value that allows you to change the default shape used for
+
+ * Provider
+ * Controller
+ * Service
+ * Factory
+ * Injected Service
+
+nodes.
+
+```js
+shapeFactories: 'house'
+```
+
+#### options.shapeModules
+Type: `String`
+Default value: `cds`
+
+A string value that allows you to change the default shape used for
+
+ * Filter
+ * Directive
+
+nodes.
+
+```js
+shapeDirectives: 'trapezium'
+```
+
 
 ## Contributing
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
  * 2014-11-21   v0.1.0  Separated the legend from the graphs.
+ * 2014-11-21   v0.1.1  Added the ability to configure which shapes to use.
