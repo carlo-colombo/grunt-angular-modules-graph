@@ -8,15 +8,13 @@ dot.templateSettings.strip = false;
 
 module.exports = function (grunt) {
 
-  grunt.loadNpmTasks('grunt-graphviz');
-
-  var basePath = "node_modules/grunt-angular-architecture-graph/";
+  grunt.loadNpmTasks("grunt-graphviz");
 
   var files = {
-    legend:  grunt.file.read(basePath + "templates/legend.def"),
-    all:     grunt.file.read(basePath + "templates/all.def"),
-    modules: grunt.file.read(basePath + "templates/modules.def"),
-    module:  grunt.file.read(basePath + "templates/module.def")
+    legend:  grunt.file.read("templates/legend.def"),
+    all:     grunt.file.read("templates/all.def"),
+    modules: grunt.file.read("templates/modules.def"),
+    module:  grunt.file.read("templates/module.def")
   };
 
   var templates = {
@@ -41,17 +39,25 @@ module.exports = function (grunt) {
    * passed in the options, then loads the template into the templates object.
    */
   function preprocessTemplates (options) {
-	// Replace placeholders.
-	files.legend = files.legend.replace(/\{1\}/g, options.shapeModules).replace(/\{2\}/g, options.shapeFactories).replace(/\{3\}/g, options.shapeDirectives);
-	files.all = files.all.replace(/\{1\}/g, options.shapeModules).replace(/\{2\}/g, options.shapeFactories).replace(/\{3\}/g, options.shapeDirectives);
-	files.modules = files.modules.replace(/\{1\}/g, options.shapeModules).replace(/\{2\}/g, options.shapeFactories).replace(/\{3\}/g, options.shapeDirectives);
-	files.module = files.module.replace(/\{1\}/g, options.shapeModules).replace(/\{2\}/g, options.shapeFactories).replace(/\{3\}/g, options.shapeDirectives);
-	// Prime the templates object.
-	templates.legendTemplate = dot.template(files.legend);
-	templates.allTemplate = dot.template(files.all);
-	templates.modulesTemplate = dot.template(files.modules);
-	templates.moduleTemplate = dot.template(files.module);
-  };
+    // Replace placeholders.
+    [
+      "legend",
+      "all",
+      "modules",
+      "module"
+    ].forEach(function (file) {
+      files[file] = files[file]
+                      .replace(/\{1\}/g, options.shapeModules)
+                      .replace(/\{2\}/g, options.shapeFactories)
+                      .replace(/\{3\}/g, options.shapeDirectives);
+    });
+
+    // Prime the templates object.
+    templates.legendTemplate  = dot.template(files.legend);
+    templates.allTemplate     = dot.template(files.all);
+    templates.modulesTemplate = dot.template(files.modules);
+    templates.moduleTemplate  = dot.template(files.module);
+  }
 
   /**
    * [parseSrcFiles description]
