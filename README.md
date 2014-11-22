@@ -1,3 +1,5 @@
+Dismissed project use instead https://github.com/lucalanca/grunt-angular-architecture-graph
+
 # grunt-angular-modules-graph
 
 > Generate modules dependencies graph in .dot format
