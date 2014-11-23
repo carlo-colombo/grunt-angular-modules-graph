@@ -115,6 +115,14 @@ shapeDirectives: 'trapezium'
 ## Contributing
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
+### List of Contributors
+
+- lucalanca     (current maintainer)
+- carlo-colombo (initial creator of the project)
+- g1ps
+
 ## Release History
- * 2014-11-21   v0.1.0  Separated the legend from the graphs.
- * 2014-11-21   v0.1.1  Added the ability to configure which shapes to use.
+ * v0.3.4
+   (g1ps) Separated the legend from the graphs.
+   (g1ps) Added the ability to configure which shapes to use.
+
