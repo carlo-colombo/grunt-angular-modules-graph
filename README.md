@@ -122,7 +122,8 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 - g1ps
 
 ## Release History
- * v0.3.4
-   (g1ps) Separated the legend from the graphs.
-   (g1ps) Added the ability to configure which shapes to use.
+
+### 0.3.4
+- (g1ps) Separated the legend from the graphs.
+- (g1ps) Added the ability to configure which shapes to use.
 
